@@ -73,4 +73,109 @@ $$
 
 ## 第二周：推荐系统
 
+### 协同过滤Collaborative filtering
+
+以不同人员对电影的评分公式的含义如下：
+
+$r(i,j) = 1$ if user $j$ has rated movie $i$ (0 otherwise)
+
+$y^{(i,j)} =$ rating given by user $j$ on movie $i$ (if defined)
+
+$w^{(j)}, b^{(j)} =$ parameters for user $j$
+
+$x^{(i)} =$ feature vector for movie $i$
+
+For user $j$ and movie $i$, predict rating: $w^{(j)} \cdot x^{(i)} + b^{(j)}$
+
+$m^{(j)} =$ no. of movies rated by user $j$
+
+To learn $w^{(j)}, b^{(j)}$:
+$$
+\begin{equation}
+\min J(w^{(j)},b^{(j)})=\frac{1}{2m^{(j)}} \sum_{i:r(i,j)=1} \left(w^{(j)} \cdot x^{(i)} + b^{(j)} - y^{(i,j)}\right)^2+\frac{\lambda}{2m^{(j)}} \sum_{k=1}^{n} \left(w_k^{(j)}\right)^2
+\label{eq:cost_j}
+\tag{cost-1}
+\end{equation}
+$$
+式$\ref{eq:cost_j}$为便于计算，可去除常值$$m^{(j)}$$，将代价函数计算公式调整为：
+$$
+\begin{equation}
+\min J(w^{(j)},b^{(j)})=\frac{1}{2} \sum_{i:r(i,j)=1} \left(w^{(j)} \cdot x^{(i)} + b^{(j)} - y^{(i,j)}\right)^2+\frac{\lambda}{2} \sum_{k=1}^{n} \left(w_k^{(j)}\right)^2
+\label{eq:cost_j-2}
+\tag{cost-2}
+\end{equation}
+$$
+对于所有的用户，如何训练 $w^{(1)}, b^{(1)},\ w^{(2)}, b^{(2)},\ \ldots\ w^{(n_u)}, b^{(n_u)}$ :
+
+$$
+\begin{equation}
+J\left(\begin{matrix} w^{(1)},\ \ldots,\ w^{(n_u)} \\ b^{(1)},\ \ldots,\ b^{(n_u)} \end{matrix}\right)
+= \frac{1}{2} \sum_{j=1}^{n_u} \sum_{i:r(i,j)=1} \left( w^{(j)} \cdot x^{(i)} + b^{(j)} - y^{(i,j)} \right)^2
++ \frac{\lambda}{2} \sum_{j=1}^{n_u} \sum_{k=1}^{n} \left( w_k^{(j)} \right)^2
+\label{eq:cost_j-3}
+\tag{cost-3}
+\end{equation}
+$$
+
+在计算电影特征的时候，代价函数修改为：
+$$
+\begin{equation}
+minJ(x^{(i)})=\frac{1}{2} \sum_{i:r(i,j)=1} \left(w^{(j)} \cdot x^{(i)} + b^{(j)} - y^{(i,j)}\right)^2+\frac{\lambda}{2} \sum_{k=1}^{n} \left(x_k^{(i)}\right)^2
+\label{eq:cost_j-4}
+\tag{cost-4}
+\end{equation}
+$$
+对所有电影特征的学习，则改为
+$$
+\begin{equation}
+J(x^{(1)},x^{(2)},\ \ldots,\ x^{(n_m)} )
+= \frac{1}{2} \sum_{i=1}^{n_m} \sum_{i:r(i,j)=1} \left( w^{(j)} \cdot x^{(i)} + b^{(j)} - y^{(i,j)} \right)^2
++ \frac{\lambda}{2} \sum_{i=1}^{n_m} \sum_{k=1}^{n} \left( x_k^{(j)} \right)^2
+\label{eq:cost_j-5}
+\tag{cost-5}
+\end{equation}
+$$
+将以上两个代价函数$\ref{eq:cost_j-3}$和 $\ref{eq:cost_j-5}$组合到一起，则可以得到：
+$$
+\begin{equation}
+J(w,b,x)= \frac{1}{2} \sum_{(i,j):r(i,j)=1} \left( w^{(j)} \cdot x^{(i)} + b^{(j)} - y^{(i,j)} \right)^2
++ \frac{\lambda}{2} \sum_{j=1}^{n_u} \sum_{k=1}^{n} \left( w_k^{(j)} \right)^2
++ \frac{\lambda}{2} \sum_{i=1}^{n_m} \sum_{k=1}^{n} \left( x_k^{(j)} \right)^2
+\label{eq:cost_j-6}
+\tag{cost-6}
+\end{equation}
+$$
+线性回归使用**梯度下降**算法计算代价函数的最小值
+$$
+\begin{equation}
+\begin{aligned}
+w_i^{(j)} &= w_i^{(j)} - \alpha \frac{\partial}{\partial w_i^{(j)}} J(w,b,x) \\
+b^{(j)} &= b^{(j)} - \alpha \frac{\partial}{\partial b^{(j)}} J(w,b,x) \\
+x_k^{(i)} &= x_k^{(i)} - \alpha \frac{\partial}{\partial x_k^{(i)}} J(w,b,x)
+\end{aligned}
+\label{eq:deri-1}
+\tag{deri-1}
+\end{equation}
+$$
+**二进制标签（喜欢/推荐/不喜欢等）**：将打分系统类型的线性回归变为逻辑回归
+$$
+\begin{equation}
+\begin{aligned}
+y^{(i,j)}:\quad f_{(w,b,x)}(x) &= g\left(w^{(j)} \cdot x^{(i)} + b^{(j)}\right) \\
+L\left(f_{(w,b,x)}(x), y^{(i,j)}\right) &= -y^{(i,j)}\log\left(f_{(w,b,x)}(x)\right) - \left(1-y^{(i,j)}\right)\log\left(1-f_{(w,b,x)}(x)\right) \\
+J(w,b,x) &= \sum_{(i,j):r(i,j)=1} L\left(f_{(w,b,x)}(x), y^{(i,j)}\right)
+\end{aligned}
+\label{eq:cost_7}
+\tag{cost-7}
+\end{equation}
+$$
+
+> 这个不是无监督机器学习系统吗？怎么有$y^{(i,j)}$这个好像表示有标签的值呢？
+
+**推荐系统应用细节**
+
+均值标准化：对已有的分数计算均值，然后将未知评分用均值代替
+
+
+
 ## 第三周：强化学习
