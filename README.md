@@ -1,6 +1,6 @@
 # 机器学习学习笔记
 
-本项目记录了从零开始学习机器学习的过程，包含 Python 基础、Andrew Ng 在 Coursera 上的《Machine Learning Specialization》（机器学习专项课程）三门课程的学习笔记与实验代码，以及一份为期 90 天的机器学习入门学习计划。
+本项目记录了从零开始学习机器学习的过程，包含 Python 基础、Andrew Ng 在 Coursera 上的《Machine Learning Specialization》（机器学习专项课程）三门课程、IBM《Introduction to Computer Vision and Image Processing》计算机视觉课程的学习笔记与实验代码，以及一份为期 90 天的机器学习入门学习计划。
 
 ## 项目结构
 
@@ -10,6 +10,7 @@
 | [Coursera1-Supervised Learning](./Coursera1-Supervised%20Learning) | 监督学习：回归与分类 |
 | [Coursera2-Advanced Learning Algorithms](./Coursera2-Advanced%20Learning%20Algorithms) | 高级学习算法：神经网络、训练优化、实践建议、决策树 |
 | [Coursera3-Unsupervised Learning, Recommenders, Reinforcement Learning](./Coursera3-Unsupervised%20Learning,%20Recommenders,%20Reinforcement%20Learning) | 无监督学习、推荐系统、强化学习 |
+| [Coursera4-Introduction to Computer Vision and Image Processing](./Coursera4-Introduction%20to%20Computer%20Vision%20and%20Image%20Processing) | 计算机视觉与图像处理：OpenCV/Pillow 图像处理、图像分类、CNN、目标检测 |
 | [90天机器学习入门学习计划.md](./90天机器学习入门学习计划.md) | 90 天入门学习路线与每日安排 |
 
 ## 1. [Python 入门](./Python%20Guidance)
@@ -48,6 +49,17 @@ Coursera 课程《Unsupervised Learning, Recommenders, Reinforcement Learning》
 - **强化学习**：MDP、Q 函数与贝尔曼方程、DQN、经验回放与目标网络
 
 详细内容见 [Unsupervised Learning_Notes.md](./Coursera3-Unsupervised%20Learning,%20Recommenders,%20Reinforcement%20Learning/Unsupervised%20Learning_Notes.md)。
+
+## 5. [Coursera — 计算机视觉与图像处理](./Coursera4-Introduction%20to%20Computer%20Vision%20and%20Image%20Processing)
+
+IBM 课程《Introduction to Computer Vision and Image Processing》的学习笔记与实验代码，内容涵盖：
+
+- **图像处理**：OpenCV 与 Pillow 图像基础操作、直方图与强度变换、几何变换、空间域滤波与卷积
+- **机器学习图像分类**：KNN、线性分类器与梯度下降、Softmax 多类分类、SVM 与 HOG 特征
+- **神经网络与深度学习**：全连接神经网络、卷积神经网络（CNN）、数据增强、动量优化
+- **目标检测**：Haar 级联分类器、Faster R-CNN
+
+详细内容见 [Computer Vision and Image Processing.md](./Coursera4-Introduction%20to%20Computer%20Vision%20and%20Image%20Processing/Computer%20Vision%20and%20Image%20Processing.md)。
 
 ## 学习计划
 
