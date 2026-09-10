@@ -83,22 +83,6 @@ jupyter nbconvert --to notebook --execute --inplace knn_predictive_maintenance.i
 5. `hyperparameter_tuning_grid_random.ipynb`  
    学习如何系统或随机地搜索超参数，并用独立测试集验证结果。
 
-## 当前执行状态
-
-截至 2026-09-08 的快速检查结果：
-
-- `xgboost_lightgbm_predictive_maintenance.ipynb`：已执行，无错误输出。
-- `kfold_cross_validation.ipynb`：已执行，无错误输出。
-- `hyperparameter_tuning_grid_random.ipynb`：已执行，无错误输出。
-- `knn_predictive_maintenance.ipynb`：包含阈值调整功能；当前代码单元未执行。
-- `svm_predictive_maintenance.ipynb`：当前代码单元未执行。
-
-如果在 Jupyter 中打开，建议选择：
-
-```text
-Kernel -> Restart & Run All
-```
-
 ## 注意事项
 
 1. 这是一个类别不平衡任务：正常样本远多于故障样本，因此不能只看 Accuracy。
