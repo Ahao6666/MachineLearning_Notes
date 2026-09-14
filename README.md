@@ -6,7 +6,7 @@
 
 | 目录 | 内容 |
 | --- | --- |
-| [Python Guidance](./Python%20Guidance) | Python 编程基础与数据可视化入门（NumPy、Pandas、Matplotlib、Seaborn 等） |
+| [Python Guidance](./Python%20Guidance) | Python 编程基础与数据可视化入门（NumPy、Pandas、Matplotlib、Seaborn 等），以及监督学习算法实战与巩固练习 |
 | [Coursera1-Supervised Learning](./Coursera1-Supervised%20Learning) | 监督学习：回归与分类 |
 | [Coursera2-Advanced Learning Algorithms](./Coursera2-Advanced%20Learning%20Algorithms) | 高级学习算法：神经网络、训练优化、实践建议、决策树 |
 | [Coursera3-Unsupervised Learning, Recommenders, Reinforcement Learning](./Coursera3-Unsupervised%20Learning,%20Recommenders,%20Reinforcement%20Learning) | 无监督学习、推荐系统、强化学习 |
@@ -16,6 +16,8 @@
 ## 1. [Python 入门](./Python%20Guidance)
 
 Python 编程基础与数据可视化入门示例代码，涵盖 NumPy、Pandas、Matplotlib、Seaborn 等常用工具，为后续机器学习课程打下基础。
+
+其中 [day31-45](./Python%20Guidance/day31-45) 是机器学习实战阶段，按"基础 → 实践 → 巩固"组织：先通过预测性维护数据集学习 KNN、SVM、XGBoost/LightGBM、交叉验证与超参数调优 5 个基础脚本，再换用心脏病、开心果（表格 + 图像）数据集练习流程套用与迁移学习，最后以 5 类大米图像分类独立复现巩固。详见该目录下的 [README](./Python%20Guidance/day31-45/README.md)。
 
 ## 2. [Coursera — 监督机器学习](./Coursera1-Supervised%20Learning)
 
